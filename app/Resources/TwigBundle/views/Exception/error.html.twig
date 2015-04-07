@@ -1,0 +1,10 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block title %}Error {{ status_text }}{% endblock %}
+   {% block content %}
+       <h1>Error {{ status_code }}</h1>
+       <h2>{{ status_text }}</h2>
+       <div>
+           Something is broken. Please let us know what you were doing when this error occurred.
+           We will fix it as soon as possible. Sorry for any inconvenience caused.
+       </div>
+   {% endblock content %}
