@@ -1,0 +1,12 @@
+{%  extends 'AppBundle::layout.html.twig' %}
+{% block content %}
+
+<h1>
+    {{ message }}
+</h1>
+<h3>Here is a random number: {{ number }}</h3>
+{% for user in users %}
+    <br/>
+<a href="{{ path('app_default_homepage', {name: user}) }}">Hi {{ user }}!</a>
+{% endfor %}
+{% endblock content %}
