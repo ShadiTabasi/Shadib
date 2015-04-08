@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -69,11 +70,18 @@ class Document
      * @var string
      */
     protected $reference;
+    /**
+     * @var Review[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="document")
+     */
+    protected $reviews;
+
 
     public function __construct()
     {
         $this->created = new \DateTime();
         $this->updated = new \DateTime();
+        $this->reviews = new ArrayCollection();
     }
 
     /**
@@ -241,6 +249,18 @@ class Document
     {
         $this->reference = $reference;
 
+        return $this;
+    }
+
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    public function addReview(Review $review)
+    {
+        $this->reviews[]= $review;
+        $review->setDocument($this);
         return $this;
     }
 
