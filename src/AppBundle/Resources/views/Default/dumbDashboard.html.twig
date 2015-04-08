@@ -1,0 +1,37 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>App's dashboard</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <h2>Authors</h2>
+            {% for person in persons %}
+                <div>
+                    <h4>{{ person.firstname }} {{ person.lastname }}</h4>
+                    <br/>
+                    <i>{{ person.job }}</i>
+                    <a href="mailto:{{ person.email }}">{{ person.email }}</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-xs-6">
+            <h2>Articles</h2>
+            {% for document in documents %}
+                <div>
+                    <h3>{{ document.title }}</h3>
+
+                    <p><i>{{ document.author }}</i></p>
+
+                    <p>{{ document.summary }}</p>
+                    Date : {{ document.created | date('d/m/Y') }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

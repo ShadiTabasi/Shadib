@@ -43,9 +43,25 @@ class DefaultController extends Controller
      * @Route("/dashboard")
      * @Template()
      */
-    public function dashboardAction(Request $request)
+    public function dashboardAction()
     {
 
+        $em = $this->getDoctrine()->getManager();
+        $personRepository = $em->getRepository('AppBundle:Person');
+        $documentRepository = $em->getRepository('AppBundle:Document');
+
+        $persons = $personRepository->findAll();
+        $documents = $documentRepository->findAll();
+
+        return ['persons' => $persons, 'documents' => $documents];
+    }
+
+    /**
+     * @Route("/dumb-dashboard")
+     * @Template()
+     */
+    public function dumbDashboardAction(Request $request)
+    {
         // The detailed way :
         // $entityManager = $this->get('doctrine.orm.default_entity_manager');
 
@@ -58,7 +74,7 @@ class DefaultController extends Controller
             ->setLastname('Doe')
             ->setEmail('john@doe.com')
             ->setJob('Art critic');
-        $entityManager->persist($john);
+        // $entityManager->persist($john);
 
 
         $jane = new Person();
@@ -67,7 +83,7 @@ class DefaultController extends Controller
             ->setLastname('Doe')
             ->setJob('Data scientist')
             ->setEmail('jane@example.com');
-        $entityManager->persist($jane);
+        // $entityManager->persist($jane);
 
         $persons = [$john, $jane];
 
@@ -77,7 +93,7 @@ class DefaultController extends Controller
             ->setReference('data_1')
             ->setSummary('An article about data mining')
             ->setTitle('Data');
-        $entityManager->persist($scienceArticle);
+        //  $entityManager->persist($scienceArticle);
 
         $artReview = new Document();
         $artReview
@@ -85,11 +101,11 @@ class DefaultController extends Controller
             ->setReference('review_1')
             ->setTitle('Goya\'s dog')
             ->setSummary('An essay about a great painting');
-        $entityManager->persist($artReview);
+        // $entityManager->persist($artReview);
         $documents = [$scienceArticle, $artReview];
 
 
-        $entityManager->flush();
+        //  $entityManager->flush();
         return ['persons' => $persons, 'documents' => $documents];
     }
 }
