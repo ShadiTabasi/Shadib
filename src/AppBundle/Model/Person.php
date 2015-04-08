@@ -11,26 +11,34 @@ use Doctrine\ORM\Mapping as ORM;
 class Person
 {
     /**
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     *
      * @var int
      */
     protected $id;
 
     /**
+     * @ORM\Column(name="firstname", type="string")
      * @var string
      */
     protected $firstname;
 
     /**
+     * @ORM\Column(name="firstname", type="string")
      * @var string
      */
     protected $lastname;
 
     /**
+     * @ORM\Column(name="firstname", type="string")
      * @var string
      */
     protected $job;
 
     /**
+     * @ORM\Column(name="firstname", type="string")
      * @var string
      */
     protected $email;
