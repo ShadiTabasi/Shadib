@@ -39,7 +39,6 @@ class DocumentController extends Controller
         }
 
         $topAuthors = $documentRepository->findTopAuthors(3);
-        dump($topAuthors);die;
 
         return ['documents' => $documents, 'person' => $person, 'topAuthors' => $topAuthors];
     }

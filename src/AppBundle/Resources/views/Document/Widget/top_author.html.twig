@@ -1,0 +1,12 @@
+<h5>{{ info.author_firstname }} {{ info.author_lastname }} ({{ info.document_count }}
+    documents)</h5>
+<p>
+    Latest document : <i>{{ info.latest_document_title }}
+        ({{ info.latest_document_created | date('d/m/Y') }})</i>
+    <br/>
+    <a href="{{ path('app_document_index', {person: info.author_id}) }}"
+       class="btn-xs btn-primary">
+        View all {{ info.author_firstname }} {{ info.author_lastname }}'s documents
+    </a>
+</p>
+<hr/>

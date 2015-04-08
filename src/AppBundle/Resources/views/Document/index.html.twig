@@ -7,7 +7,6 @@
         {% else %}
             <h2>All of our documents</h2>
         {% endif %}
-
         <div class="row">
             <div class="col-xs-8">
                 <table class="table table-bordered">
@@ -34,6 +33,12 @@
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div class="col-xs-4">
+                <h4>Our top authors</h4>
+                {% for info in topAuthors %}
+                  {% include '@App/Document/Widget/top_author.html.twig' %}
+                {% endfor %}
             </div>
         </div>
     </div>
