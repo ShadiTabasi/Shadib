@@ -1,0 +1,35 @@
+{% extends '@App/layout.html.twig' %}
+{% block content %}
+    <div class="container">
+
+        <h2>All of our guys</h2>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Job</th>
+                        <th>Email</th>
+                        <th>Useful links</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for person in persons %}
+                        <tr>
+                            <td>{{ person.firstname }}</td>
+                            <td>{{ person.lastname }}</td>
+                            <td>{{ person.job }}</td>
+                            <td>{{ person.email }}</td>
+                            <td><a class="btn btn-sm btn-primary"
+                                   href="{{ path('app_document_index',{person: person.id}) }}">View documents</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

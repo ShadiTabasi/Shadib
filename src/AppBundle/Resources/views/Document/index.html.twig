@@ -25,9 +25,6 @@
                         <tr>
                             <td>{{ document.created | date('d/m/Y') }}</td>
                             <td>
-                                {{ dump(path('app_document_index')) }}<br/>
-                                {{ dump(path('app_document_index', {something: 'value', otherthing: 'st aer aer aera ea^ù`^ù$$uff', page: 3})) }}
-                                <br/>
                                 <a href="{{ path('app_document_index', {person: document.author.id}) }}">{{ document.author }}</a>
                             </td>
                             <td>{{ document.title }}</td>
