@@ -19,7 +19,7 @@ class DemoController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        return $this->redirectToRoute('app_default_dashboard');
     }
 
     /**
