@@ -38,6 +38,9 @@ class DocumentController extends Controller
             $documents = $documentRepository->findBy(['author' => $person]);
         }
 
-        return ['documents' => $documents, 'person' => $person];
+        $topAuthors = $documentRepository->findTopAuthors(3);
+        dump($topAuthors);die;
+
+        return ['documents' => $documents, 'person' => $person, 'topAuthors' => $topAuthors];
     }
 }

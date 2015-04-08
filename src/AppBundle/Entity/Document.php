@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Represents a document "metadata"
- *  @ORM\Entity()
+ *  @ORM\Entity(repositoryClass="AppBundle\Repository\DocumentRepository")
  *
  * @author Hugues Maignol <hugues.maignol@kitpages.fr>
  */
