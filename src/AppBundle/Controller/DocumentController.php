@@ -42,4 +42,27 @@ class DocumentController extends Controller
 
         return ['documents' => $documents, 'person' => $person, 'topAuthors' => $topAuthors];
     }
+
+    /**
+     * @Route("/documents/new")
+     * @Template()
+     */
+    public function newAction(Request $request)
+    {
+        $document = new Document();
+        $form = $this->createForm('document', $document);
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($document);
+                $em->flush();
+            }
+
+            return $this->redirectToRoute('app_document_index');
+        }
+
+        return ['form' => $form->createView()];
+
+    }
 }

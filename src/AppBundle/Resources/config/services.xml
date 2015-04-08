@@ -6,7 +6,10 @@
 
     <services>
         <service id="app.random_generator" class="AppBundle\Service\RandomGenerator">
+        </service>
 
+        <service id="app.form.type.document" class="AppBundle\Form\Types\DocumentType">
+            <tag name="form.type" alias="document"/>
         </service>
     </services>
 </container>

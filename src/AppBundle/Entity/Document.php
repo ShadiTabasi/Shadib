@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Represents a document "metadata"
- *  @ORM\Entity(repositoryClass="AppBundle\Repository\DocumentRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\DocumentRepository")
  *
  * @author Hugues Maignol <hugues.maignol@kitpages.fr>
  */
@@ -23,7 +24,8 @@ class Document
 
     /**
      * @ORM\Column(name="title", type="string")
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="5", max="100")
      * @var string
      */
     protected $title;
@@ -44,6 +46,8 @@ class Document
     protected $updated;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(min="20", max="100")
      * @ORM\Column(name="summary", type="string")
      *
      * @var string
@@ -51,13 +55,15 @@ class Document
     protected $summary;
 
     /**
+     * @Assert\NotNull()
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person")
-     * @
      * @var Person
      */
     protected $author;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(min="1", max="10")
      * @ORM\Column(name="reference", type="string", unique = true )
      *
      * @var string
