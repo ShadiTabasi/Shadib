@@ -1,0 +1,43 @@
+{% extends '@App/layout.html.twig' %}
+{% block content %}
+    <div class="container">
+        {% if person %}
+            <h2>Documents written by {{ person }}</h2>
+            <a href="{{ path('app_document_index') }}" class="btn btn-default">Show all</a>
+        {% else %}
+            <h2>All of our documents</h2>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-xs-8">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Reference</th>
+                        <th>Last modification</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for document in documents %}
+                        <tr>
+                            <td>{{ document.created | date('d/m/Y') }}</td>
+                            <td>
+                                {{ dump(path('app_document_index')) }}<br/>
+                                {{ dump(path('app_document_index', {something: 'value', otherthing: 'st aer aer aera ea^ù`^ù$$uff', page: 3})) }}
+                                <br/>
+                                <a href="{{ path('app_document_index', {person: document.author.id}) }}">{{ document.author }}</a>
+                            </td>
+                            <td>{{ document.title }}</td>
+                            <td>{{ document.reference }}</td>
+                            <td>{{ document.updated | date('d/m/Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
