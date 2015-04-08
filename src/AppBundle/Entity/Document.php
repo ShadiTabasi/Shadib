@@ -2,44 +2,64 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Represents a document "metadata"
+ *  @ORM\Entity()
  *
  * @author Hugues Maignol <hugues.maignol@kitpages.fr>
  */
 class Document
 {
     /**
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     *
      * @var int
      */
     protected $id;
 
     /**
+     * @ORM\Column(name="title", type="string")
+     *
      * @var string
      */
     protected $title;
 
     /**
+     * @ORM\Column(name="created_date", type="datetime")
+     *
+     * @var string
      * @var \DateTime
      */
     protected $created;
 
     /**
+     * @ORM\Column(name="updated_date", type="datetime")
+     *
      * @var \DateTime
      */
     protected $updated;
 
     /**
+     * @ORM\Column(name="summary", type="string")
+     *
      * @var string
      */
     protected $summary;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person")
+     * @
      * @var Person
      */
     protected $author;
 
     /**
+     * @ORM\Column(name="reference", type="string", unique = true )
+     *
      * @var string
      */
     protected $reference;
