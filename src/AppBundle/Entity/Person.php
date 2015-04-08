@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Model;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,19 +26,19 @@ class Person
     protected $firstname;
 
     /**
-     * @ORM\Column(name="firstname", type="string")
+     * @ORM\Column(name="lastname", type="string")
      * @var string
      */
     protected $lastname;
 
     /**
-     * @ORM\Column(name="firstname", type="string")
+     * @ORM\Column(name="job", type="string")
      * @var string
      */
     protected $job;
 
     /**
-     * @ORM\Column(name="firstname", type="string")
+     * @ORM\Column(name="email", type="string")
      * @var string
      */
     protected $email;
