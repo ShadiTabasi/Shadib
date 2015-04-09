@@ -1,4 +1,4 @@
 class
 =====
 
-A Symfony project created on April 7, 2015, 9:46 am.
+This is a demo project used for a symtony2 training session
