@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Document;
 use AppBundle\Entity\Person;
+use AppBundle\Repository\DocumentRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -32,11 +33,12 @@ class DocumentController extends Controller
         } else {
             $person = null;
         }
+        /** @var DocumentRepository $documentRepository */
         $documentRepository = $em->getRepository('AppBundle:Document');
         if (! $personId) {
-            $documents = $documentRepository->findAll();
+            $documents = $documentRepository->findBy([], ['created' => 'DESC']);
         } else {
-            $documents = $documentRepository->findBy(['author' => $person]);
+            $documents = $documentRepository->findBy(['author' => $person], ['created' => 'DESC']);
         }
 
         $topAuthors = $documentRepository->findTopAuthors(3);
