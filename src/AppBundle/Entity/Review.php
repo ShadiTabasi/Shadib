@@ -42,14 +42,21 @@ class Review {
     protected $document;
 
     /**
+     * @ORM\Column(name="date", type="datetime")
      * @var \DateTime
      */
     protected $date;
 
     /**
+     * @ORM\Column(name="content", type="text")
      * @var string
      */
     protected $content;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
     /**
      * @return int

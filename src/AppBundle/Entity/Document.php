@@ -73,6 +73,7 @@ class Document
     /**
      * @var Review[]
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Review", mappedBy="document")
+     * @ORM\OrderBy({"date" = "DESC"})
      */
     protected $reviews;
 
@@ -82,6 +83,12 @@ class Document
         $this->created = new \DateTime();
         $this->updated = new \DateTime();
         $this->reviews = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->title.' by '.$this->author;
+
     }
 
     /**

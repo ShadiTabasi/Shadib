@@ -26,7 +26,7 @@
                             <td>
                                 <a href="{{ path('app_document_index', {person: document.author.id}) }}">{{ document.author }}</a>
                             </td>
-                            <td>{{ document.title }}</td>
+                            <td><a href="{{ path('app_document_show', {id: document.id}) }}">{{ document.title }}</a></td>
                             <td>{{ document.reference }}</td>
                             <td>{{ document.updated | date('d/m/Y') }}</td>
                         </tr>

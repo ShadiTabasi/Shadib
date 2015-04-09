@@ -98,4 +98,13 @@ class DocumentController extends Controller
 
         return ['form' => $form->createView()];
     }
+
+    /**
+     * @Route("/documents/{id}")
+     * @Template()
+     */
+    public function showAction(Document $document)
+    {
+        return['document' => $document];
+    }
 }

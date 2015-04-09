@@ -1,0 +1,30 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block content %}
+    <h1>{{ document.title }}</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+        {{ document.author }}
+        {{ document.created | date('d/m/Y') }}
+        {{ document.updated | date('d/m/Y')}}
+        {{ document.summary }}
+    </div>
+        </div>
+    <a class="btn btn-primary btn-lg" href="{{ path('app_review_create', {id:document.id}) }}"> Add Review</a>
+    <br/><br/>
+
+    {% for review in document.reviews %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Review by {{ review.author }} on {{ review.date | date('d/m/Y') }}
+            </div>
+            <div class="panel-body">
+                {{ review.content }}
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}
+

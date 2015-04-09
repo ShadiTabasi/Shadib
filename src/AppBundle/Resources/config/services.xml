@@ -11,5 +11,9 @@
         <service id="app.form.type.document" class="AppBundle\Form\Types\DocumentType">
             <tag name="form.type" alias="document"/>
         </service>
+
+        <service id="app.form.type.review" class="AppBundle\Form\Types\ReviewType">
+            <tag name="form.type" alias="review"/>
+        </service>
     </services>
 </container>
