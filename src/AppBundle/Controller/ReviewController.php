@@ -33,6 +33,9 @@ class ReviewController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($review);
             $em->flush();
+            $session = $this->get('session');
+            $session->getFlashBag()->add('success', 'A new review for "' . $document . '" as beeen successfully created');
+
             return $this->redirectToRoute('app_document_show', ['id'=>$document->getId()]);
         }
 

@@ -60,9 +60,15 @@ class DocumentController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($document);
                 $em->flush();
-            }
 
-            return $this->redirectToRoute('app_document_index');
+                $session = $this->get('session');
+                $session->getFlashBag()->add(
+                    'success',
+                    'The document "' . $document . '" as beeen successfully created'
+                );
+
+                return $this->redirectToRoute('app_document_index');
+            }
         }
 
         return ['form' => $form->createView()];
@@ -91,9 +97,15 @@ class DocumentController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $document->setUpdated(new DateTime());
                 $em->flush();
+                $session = $this->get('session');
+                $session->getFlashBag()->add(
+                    'success',
+                    'The document "' . $document . '" as beeen successfully updated'
+                );
+
+                return $this->redirectToRoute('app_document_index');
             }
 
-            return $this->redirectToRoute('app_document_index');
         }
 
         return ['form' => $form->createView()];
@@ -105,6 +117,6 @@ class DocumentController extends Controller
      */
     public function showAction(Document $document)
     {
-        return['document' => $document];
+        return ['document' => $document];
     }
 }
